@@ -25,16 +25,30 @@ print(f'Original Shape Labels ytest: {ytest.shape}')
 xt = xt.reshape(xt.shape[0], filas, columnas, 1)
 xtest = xtest.reshape(xtest.shape[0], filas, columnas, 1)
 
-print('-'*30)
+print('-'*60)
 print(f'New Shape Images xt: {xt.shape}')
 print(f'New Shape Images xtest: {xtest.shape}')
 
+print('*'*60)
+print('\n')
+print(f'Default type xt: {xt.dtype}')
+print(f'Default type xtest: {xtest.dtype}')
 xt = xt.astype('float32')
 xtest = xtest.astype('float32')
 
+print('-'*60)
+print(f'New type xt: {xt.dtype}')
+print(f'New type xtest: {xtest.dtype}')
 
+print('*'*60)
+print('\n')
+print(f'Default max value xt: {xt.max()}')
+print(f'Default max value xtest: {xtest.max()}')
 xt = xt / 255
 xtest = xtest / 255
+print('-'*60)
+print(f'Normalized max value xt: {xt.max()}')
+print(f'Normalized max value xtest: {xtest.max()}')
 
 yt = tensorflow.keras.utils.to_categorical(yt, num_classes)
 ytest = tensorflow.keras.utils.to_categorical(ytest, num_classes)
