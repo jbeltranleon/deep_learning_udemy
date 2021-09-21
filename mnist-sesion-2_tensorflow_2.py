@@ -5,17 +5,33 @@ from tensorflow.keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2
 
 batch_size = 100
 num_classes = 10
+
+# Cantidad de veces que el modelo ve toda la data
 epochs = 10
 
+# Dimensiones de la imagen en px
 filas, columnas = 28, 28
 
+# Hacemos directamente el split
 (xt, yt), (xtest, ytest) = mnist.load_data()
 
+# Reshape
+print(f'Original Shape Images xt: {xt.shape}')
+print(f'Original Shape Labels yt: {yt.shape}')
+print(f'Original Shape Images xtest: {xtest.shape}')
+print(f'Original Shape Labels ytest: {ytest.shape}')
+
+# E.g shape esperado: (60000, 28, 28, 1)
 xt = xt.reshape(xt.shape[0], filas, columnas, 1)
 xtest = xtest.reshape(xtest.shape[0], filas, columnas, 1)
 
+print('-'*30)
+print(f'New Shape Images xt: {xt.shape}')
+print(f'New Shape Images xtest: {xtest.shape}')
+
 xt = xt.astype('float32')
 xtest = xtest.astype('float32')
+
 
 xt = xt / 255
 xtest = xtest / 255
